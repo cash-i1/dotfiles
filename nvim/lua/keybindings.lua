@@ -4,10 +4,10 @@ vim.g.mapleader = ','
 -- ctrl+c to toggle insert and normal mode.
 vim.api.nvim_set_keymap('i', '<D-c>', '<Esc>', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('i', '<D-s>', '<Esc>:w<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<D-s>', '<Esc>:w<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('i', '<D-z>', '<cmd>undo<cr>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap("i", '<D-S-Z>', '<cmd>redo<cr>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('i', '<C-s>', '<Esc>:w<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<D-s>', '<Esc>:w<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('i', '<D-z>', '<cmd>undo<cr>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("i", '<D-S-Z>', '<cmd>redo<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>f', '<cmd>Telescope find_files<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>e', '<cmd>Neotree filesystem reveal left toggle=true<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>r', '<cmd>ToggleTerm direction=float<cr>', { noremap = true, silent = true })
