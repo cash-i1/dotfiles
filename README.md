@@ -18,8 +18,6 @@ _Linux only_
 > **This python script is pretty bad so run it at your own risk!**
 (also it doesnt even work for now)
 
-It works with almost all markdown flavours (the below blank line matters).
-
 1. Make sure python is installed
 2. Download `install.py` ([here](https://raw.githubusercontent.com/cash-i1/dotfiles/main/install.py))
 3. Run it and it should backup your directories and replace them with the new ones
