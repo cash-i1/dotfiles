@@ -1,0 +1,10 @@
+return {
+    "hisbaan/dataview.nvim",
+    event = {
+        "BufEnter " .. "/media/hdd1/Obsidian/Vault2",
+    },
+    opts = {
+        vault_dir = "/media/hdd1/Obsidian/Vault2",
+        buffer_type = "float", -- float | split | vsplit | tab
+    }
+}

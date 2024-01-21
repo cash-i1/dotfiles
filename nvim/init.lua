@@ -2,19 +2,20 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
-vim.cmd("set conceallevel=3")
+vim.cmd("set conceallevel=2")
 -- vim.cmd("set autochdir")
 vim.cmd("cd %:h")
+vim.o.guifont ="JetBrains Mono:h14"
 vim.cmd("set clipboard=unnamedplus")
 vim.wo.relativenumber = true
 vim.g.mapleader = "," 
 
-vim.api.nvim_exec([[
-  augroup cdpwd
-    autocmd!
-    autocmd VimEnter * execute('lcd ' .. getcwd())
-  augroup END
-]], false)
+-- vim.api.nvim_exec([[
+--   augroup cdpwd
+--     autocmd!
+--     autocmd VimEnter * execute('lcd ' .. getcwd())
+--   augroup END
+-- ]], false)
 
 -- autochdir = true
 
