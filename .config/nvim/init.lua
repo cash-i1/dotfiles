@@ -5,11 +5,11 @@ vim.cmd("set shiftwidth=4")
 vim.cmd("set conceallevel=2")
 -- vim.cmd("set autochdir")
 vim.cmd("cd %:h")
-vim.o.guifont ="JetBrains Mono:h14"
+-- vim.o.guifont ="JetBrains Mono:h14"
+vim.opt.guifont = { "JetBrainsMono Nerd Font", ":h14" }
 vim.cmd("set clipboard=unnamedplus")
 vim.wo.relativenumber = true
 vim.g.mapleader = "," 
-
 -- vim.api.nvim_exec([[
 --   augroup cdpwd
 --     autocmd!

@@ -7,6 +7,7 @@ return {
             options = {
                 -- theme = "gruvbox"
                 theme = "dracula"
+                -- theme = "base16"
             }
         })
     end

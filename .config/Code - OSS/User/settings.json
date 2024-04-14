@@ -1,0 +1,32 @@
+{
+    "workbench.activityBar.location": "top",
+    "window.titleBarStyle": "custom",
+    "editor.fontSize": 20,
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontWeight": "bold",
+    "workbench.iconTheme": "vscode-icons",
+    "editor.fontLigatures": true,
+    "files.exclude": {
+        "**/.git": false
+    },
+    "editor.cursorSmoothCaretAnimation": "on",
+    "vsicons.presets.hideExplorerArrows": true,
+    "workbench.colorCustomizations": {
+        // "editorCursor.foreground": "#ffffff",
+    },
+    "editor.cursorBlinking": "phase",
+    "rust-analyzer.check.command": "clippy",
+    "rust-analyzer.checkOnSave": true,
+    "editor.minimap.enabled": false,
+    "vim.useSystemClipboard": true,
+    "editor.stickyScroll.enabled": false,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120,
+    "editor.quickSuggestions": {
+        "comments": "on",
+        "strings": "on",
+        "other": "on"
+    },
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.guides.bracketPairs": true,
+}

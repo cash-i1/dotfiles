@@ -5,14 +5,31 @@ return {
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
         lspconfig.lua_ls.setup({
-            capabilities = capabilities
+            capabilities = capabilities,
+            workspace = {
+              checkThirdParty = false,
+              telemetry = { enable = false },
+              library = {
+                "${3rd}/love2d/library"
+              }
+            }
         })
         lspconfig.clangd.setup({
             capabilities = capabilities,
         })
         lspconfig.pylsp.setup({
             capabilities = capabilities,
+  
         })
+        lspconfig.rust_analyzer.setup({
+            capabilities = capabilities,
+        })
+        lspconfig.gdscript.setup {
+            capabilities = capabilities,
+            flags = {
+              debounce_text_changes = 150,
+            }
+          }
             --[===[]] require('lspconfig').clangd.setup {
                 capabilities = { offsetEncoding = 'utf-16' },
                 root_dir = function(fname)
