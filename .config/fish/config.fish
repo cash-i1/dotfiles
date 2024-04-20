@@ -11,6 +11,8 @@ if status is-interactive
 
     set -x PATH /home/cash/.cargo/bin $PATH
     set -x PATH ~/.local/bin/ $PATH
+    set -x PATH /home/cash/.rustup/toolchains/stable-x86_64-unknown-lin
+ux-gnu/bin/rust-analyzer $PATH
     set -x EDITOR code
     
     alias edit $EDITOR

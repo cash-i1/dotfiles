@@ -1,5 +1,5 @@
 return {
-    { "bluz71/vim-moonfly-colors" },
+    { "bluz71/vim-moonfly-colors", lazy = false, priority = 1000 },
     { "akinsho/toggleterm.nvim", version = "*", config = true},
     {
         "nvim-neo-tree/neo-tree.nvim",
@@ -19,8 +19,16 @@ return {
 
     -- LSP Plugins
     {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig",
+        { "williamboman/mason.nvim", lazy = false, priority = 1000 },
+        { "williamboman/mason-lspconfig.nvim", dependencies = "williamboman/mason.nvim" },
+        { "neovim/nvim-lspconfig", dependencies = "williamboman/mason-lspconfig.nvim" },
+    },
+    -- Completion Plugins
+    {
+        "hrsh7th/nvim-cmp",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-buffer",
+        "L3MON4D3/LuaSnip",
     }
 }
