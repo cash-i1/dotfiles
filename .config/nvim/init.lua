@@ -1,26 +1,24 @@
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=4")
-vim.cmd("set softtabstop=4")
-vim.cmd("set shiftwidth=4")
-vim.cmd("set conceallevel=2")
--- vim.cmd("set autochdir")
-vim.cmd("cd %:h")
--- vim.o.guifont ="JetBrains Mono:h14"
-vim.opt.guifont = { "JetBrainsMono Nerd Font", ":h14" }
-vim.cmd("set clipboard=unnamedplus")
-vim.wo.relativenumber = true
-vim.g.mapleader = "," 
--- vim.api.nvim_exec([[
---   augroup cdpwd
---     autocmd!
---     autocmd VimEnter * execute('lcd ' .. getcwd())
---   augroup END
--- ]], false)
+-- Set Variables
+vim.o.expandtab =          true
+vim.o.tabstop =            4
+vim.o.softtabstop =        4
+vim.o.shiftwidth =         4
+vim.o.conceallevel =       2
+vim.o.clipboard =          "unnamedplus"
+vim.o.relativenumber =     true
+vim.g.loaded_netrw       = 1
+vim.g.loaded_netrwPlugin = 1
+-- Set Font
+vim.opt.guifont =       { "JetBrainsMono Nerd Font", ":h14" }
+vim.g.mapleader =       "," 
+vim.g.maplocalleader =  ",," 
 
--- autochdir = true
+-- Mappings
+vim.keymap.set({'n', 'v', 'i'}, '<C-s>', '<cmd>wa<cr>')
 
+-- Lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -31,6 +29,10 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-
 require("lazy").setup("plugins")
 
+-- Theme
+vim.cmd("colorscheme moonfly")
+
+-- Load Config
+require("configs")

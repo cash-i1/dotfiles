@@ -79,5 +79,13 @@
         "key": "up",
         "command": "editor.action.scrollUpHover",
         "when": "editorHoverFocused"
-    }
+    },
+    {
+    "key": "f5",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "cargo run\u000D"
+    },
+    "when": "editorLangId == 'rust'"
+  },
 ]

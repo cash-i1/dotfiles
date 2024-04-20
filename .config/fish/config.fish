@@ -10,7 +10,8 @@ if status is-interactive
     alias cdweb "cd /media/chdd2/code/web"
 
     set -x PATH /home/cash/.cargo/bin $PATH
-    set -x EDITOR neovide
+    set -x PATH ~/.local/bin/ $PATH
+    set -x EDITOR code
     
     alias edit $EDITOR
 end
@@ -122,3 +123,7 @@ alias cdi=__zoxide_zi
 # ~/.config/fish/config.fish):
 #
 #   zoxide init fish | source
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH

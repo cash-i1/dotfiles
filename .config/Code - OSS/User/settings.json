@@ -29,4 +29,5 @@
     },
     "editor.suggestOnTriggerCharacters": true,
     "editor.guides.bracketPairs": true,
+    "window.zoomLevel": -1,
 }
