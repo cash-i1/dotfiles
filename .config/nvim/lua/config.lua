@@ -16,6 +16,7 @@ local telescope = require("telescope")
 local cmp = require("cmp")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local luasnip = require("luasnip")
+local auto_save = require("auto-save")
 
 -- Options
 vim.o.expandtab =          true
@@ -29,14 +30,22 @@ vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.guifont =          { "JetBrainsMono Nerd Font", ":h14" }
 vim.opt.signcolumn =       "no"
+vim.opt.backup = true
+vim.opt.backupdir =        os.getenv 'HOME' .. "/.cache/nvim/backup"
+vim.opt.undofile = true
+vim.opt.undodir = os.getenv 'HOME' ..  "/.cache/nvim/undo"
 
 -- Keybinds
 vim.keymap.set({'n', 'v', 'i'}, '<C-s>', '<cmd>wa<cr>')
 vim.keymap.set("n", "<Leader>n", ":Neotree toggle<CR>")
+-- vim.keymap.set("n", "<Esc>", ":q<CR>")
+vim.keymap.set("n", "<Leader><Esc>", ":qa<CR>")
+vim.keymap.set("n", "<Leader><Space>", ":qa<CR>")
 vim.keymap.set("n", "<Leader>f", ":Telescope find_files<CR>")
 vim.keymap.set("n", "<Leader>g", ":Telescope live_grep<CR>")
 vim.keymap.set("n", "<Leader>d", ":lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<Leader>r", ":lua vim.lsp.buf.definition<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>e", ":lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>r", ":lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 toggleterm.setup({ open_mapping = [[<c-/>]] })
 cmp.setup({
     mapping = {
@@ -57,7 +66,7 @@ local lsp_capabilities = cmp_nvim_lsp.default_capabilities()
 
 -- Plugin Setup
 toggleterm.setup({
-    direction = "vertical",
+    direction = "float",
     size = 55,
 })
 
@@ -100,6 +109,10 @@ telescope.setup({
     }
 })
 
+auto_save.setup({
+    enabled = true
+})
+
 mason.setup({})
 mason_lspconfig.setup({
     ensure_installed = ensured_languages["lsp"]
@@ -114,6 +127,7 @@ cmp.setup({
     window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
+        hover = cmp.config.window.bordered(),
     },
     sources = {
         { name = "nvim_lsp", max_item_count = 10},
@@ -132,4 +146,14 @@ for _, server in ipairs(ensured_languages["lsp"]) do
         capabilities = lsp_capabilities,
     })
 end
+
+lspconfig.rust_analyzer.setup({
+    settings = {
+        ['rust-analyzer'] = {
+            diagnostics = {
+                enable = false;
+            }
+    	}
+    }
+})
 
