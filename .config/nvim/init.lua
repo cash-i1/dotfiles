@@ -20,5 +20,45 @@ vim.opt.rtp:prepend(lazypath)
 -- Load Plugins
 require("lazy").setup("plugins")
 
--- Load Config
-require("config")
+-- Config
+-- Theme
+vim.cmd("colorscheme moonfly")
+
+-- Imports
+require('luasnip.loaders.from_vscode').lazy_load()
+
+-- Options
+vim.o.expandtab =          true
+vim.o.tabstop =            4
+vim.o.softtabstop =        4
+vim.o.shiftwidth =         4
+vim.o.conceallevel =       2
+vim.o.clipboard =          "unnamedplus"
+-- vim.o.relativenumber = true
+vim.o.number = true
+-- vim.g.loaded_netrw       = 1
+vim.g.loaded_netrwPlugin = 1
+vim.opt.guifont =          { "JetBrainsMono Nerd Font", ":h14" }
+-- vim.opt.guifont =          { "Roboto Mono Medium", ":h14" }
+vim.opt.signcolumn =       "no"
+vim.opt.backup = true
+vim.opt.backupdir =        os.getenv 'HOME' .. "/.cache/nvim/backup"
+vim.opt.undofile = true
+vim.opt.undodir = os.getenv 'HOME' ..  "/.cache/nvim/undo"
+
+-- Keybinds
+vim.keymap.set({'n', 'v', 'i'}, '<C-s>', '<cmd>wa<cr>')
+vim.keymap.set("n", "<Leader>n", ":Neotree toggle<CR>")
+-- vim.keymap.set("n", "<Esc>", ":q<CR>")
+vim.keymap.set("n", "<Leader><Esc>", ":qa<CR>")
+vim.keymap.set("n", "<Leader><Space>", ":qa<CR>")
+vim.keymap.set("n", "<Leader>f", ":Telescope find_files<CR>")
+vim.keymap.set("n", "<Leader>g", ":Telescope live_grep<CR>")
+vim.keymap.set("n", "<Leader>d", ":lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>e", ":lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>r", ":lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
+
+vim.diagnostic.config({
+    virtual_text = true,
+    update_in_insert = true,
+})
