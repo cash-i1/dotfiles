@@ -17,8 +17,8 @@ return {
     },
     { "Pocco81/auto-save.nvim" },
     { "folke/trouble.nvim" },
-
-
+    { "j-hui/fidget.nvim" },
+    { "numToStr/Comment.nvim" },
     -- LSP Plugins
     {
         { "williamboman/mason.nvim", lazy = false, priority = 1000 },

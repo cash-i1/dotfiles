@@ -17,6 +17,8 @@ local cmp = require("cmp")
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 local luasnip = require("luasnip")
 local auto_save = require("auto-save")
+local fidget = require("fidget")
+local comment = require("Comment")
 
 -- Options
 vim.o.expandtab =          true
@@ -25,10 +27,12 @@ vim.o.softtabstop =        4
 vim.o.shiftwidth =         4
 vim.o.conceallevel =       2
 vim.o.clipboard =          "unnamedplus"
-vim.o.relativenumber =     true
+-- vim.o.relativenumber = true
+vim.o.number = true
 vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.guifont =          { "JetBrainsMono Nerd Font", ":h14" }
+-- vim.opt.guifont =          { "Roboto Mono Medium", ":h14" }
 vim.opt.signcolumn =       "no"
 vim.opt.backup = true
 vim.opt.backupdir =        os.getenv 'HOME' .. "/.cache/nvim/backup"
@@ -51,16 +55,19 @@ cmp.setup({
     mapping = {
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ["<C-k>"] = cmp.mapping.select_prev_item(),
+        ["<C-j>"] = cmp.mapping.select_next_item(),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
 })
 
+
 -- Variables
 local ensured_languages = {
-    lsp =  { "lua_ls", "rust_analyzer" },
-    treesitter = { "lua", "python", "rust" }
+    lsp =  { "lua_ls", "rust_analyzer", "clangd" },
+    treesitter = { "lua", "python", "rust", "cpp" }
 }
 local lsp_capabilities = cmp_nvim_lsp.default_capabilities()
 
@@ -133,6 +140,16 @@ cmp.setup({
         { name = "nvim_lsp", max_item_count = 10},
         { name = "buffer", max_item_count = 10},
     },
+})
+
+fidget.setup({})
+comment.setup({
+    opleader = {
+        line = '<Leader>w',
+    },
+    toggler = {
+        line = '<Leader>w'
+    }
 })
 
 -- Misc

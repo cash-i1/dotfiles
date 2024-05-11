@@ -30,4 +30,8 @@
     "editor.suggestOnTriggerCharacters": true,
     "editor.guides.bracketPairs": true,
     "window.zoomLevel": -1,
+    "workbench.colorTheme": "Default High Contrast",
+    "zig.path": "zig",
+    "zig.zls.path": "/home/cash/.config/Code - OSS/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
+    "zig.initialSetupDone": true,
 }
