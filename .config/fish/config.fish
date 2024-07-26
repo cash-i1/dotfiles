@@ -14,6 +14,7 @@ if status is-interactive
     set -x PATH /usr/lib/jvm/java-21-openjdk/bin/ $PATH
     # set -x PATH /home/cash/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-analyzer $PATH
     set -x EDITOR code
+    set -x JAVA_HOME /usr/lib/jvm/java-21-openjdk/bin/java
     
     alias edit $EDITOR
 end

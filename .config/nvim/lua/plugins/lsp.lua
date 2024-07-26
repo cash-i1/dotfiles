@@ -13,7 +13,7 @@ return {
         dependencies = "williamboman/mason.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "rust_analyzer", "clangd" }
+                ensure_installed = { "wgsl_analyzer", "lua_ls", "rust_analyzer", "clangd", "html", "pylsp", "omnisharp", "zls" }
             })
         end
     },
@@ -22,12 +22,33 @@ return {
         dependencies = "williamboman/mason-lspconfig.nvim",
         config = function()
             local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
-            require("lspconfig").rust_analyzer.setup({
+            local lsp_config = require("lspconfig")
+
+            lsp_config.lua_ls.setup({
+                capabilities = lsp_capabilities,
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { "vim" }
+                        }
+                    }
+                }
+            })
+            -- lsp_config.pylsp.setup({})
+            lsp_config.omnisharp.setup({})
+            lsp_config.wgsl_analyzer.setup({})
+            lsp_config.pyright.setup({})
+            lsp_config.clangd.setup({})
+            lsp_config.tsserver.setup({})
+            lsp_config.zls.setup({})
+            lsp_config.gdscript.setup { on_attach = on_attach, flags = { debounce_text_changes = 150, } }
+
+            lsp_config.rust_analyzer.setup({
                 capabilities = lsp_capabilities,
                 settings = {
                     ['rust-analyzer'] = {
                         diagnostics = {
-                            enable = false;
+                            enable = false,
                         }
                     }
                 }
@@ -37,7 +58,7 @@ return {
 
     -- Completion Plugins
     {
-        "hrsh7th/nvim-cmp",  
+        "hrsh7th/nvim-cmp",
         config = function()
             local cmp = require("cmp")
             cmp.setup({
@@ -62,15 +83,15 @@ return {
                 },
                 sources = {
                     { name = "nvim_lsp", max_item_count = 10},
-                    { name = "buffer", max_item_count = 10},
+                    { name = "buffer",   max_item_count = 10 },
                 },
             })
         end
     },
-            
+
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-buffer",
     "L3MON4D3/LuaSnip",
-    
+
 }
