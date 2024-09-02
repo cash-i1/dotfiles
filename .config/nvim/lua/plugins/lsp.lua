@@ -13,7 +13,7 @@ return {
         dependencies = "williamboman/mason.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "wgsl_analyzer", "lua_ls", "rust_analyzer", "clangd", "html", "pylsp", "omnisharp", "zls" }
+                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "html", "pylsp", "zls", "ruby_lsp" }
             })
         end
     },
@@ -77,14 +77,18 @@ return {
                     end,
                 },
                 window = {
-                    completion = cmp.config.window.bordered(),
-                    documentation = cmp.config.window.bordered(),
-                    hover = cmp.config.window.bordered(),
+                    -- completion = cmp.config.window.bordered(),
+                    -- documentation = cmp.config.window.bordered(),
+                    -- hover = cmp.config.window.bordered(),
                 },
                 sources = {
-                    { name = "nvim_lsp", max_item_count = 10},
-                    { name = "buffer",   max_item_count = 10 },
+                    { name = "path",     priority = 10 },
+                    { name = "nvim_lsp", },
+                    { name = "nvim_lua", },
+                    { name = "buffer", },
+                    { name = "luasnip",  priority = -10 },
                 },
+
             })
         end
     },

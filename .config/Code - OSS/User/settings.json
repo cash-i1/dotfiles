@@ -31,6 +31,6 @@
     "editor.guides.bracketPairs": true,
     "window.zoomLevel": -1,
     "zig.path": "zig",
-    "zig.zls.path": "/home/cash/.config/Code - OSS/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
     "zig.initialSetupDone": true,
+    "zig.zls.path": "/usr/bin/zls",
 }

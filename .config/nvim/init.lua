@@ -27,9 +27,10 @@ require("lazy").setup("plugins", {
 -- Config
 -- Theme
 vim.cmd("colorscheme moonfly")
-
 -- Imports
 require('luasnip.loaders.from_vscode').lazy_load()
+
+vim.g.zig_fmt_autosave = 0
 
 -- Options
 vim.o.expandtab = true
@@ -38,6 +39,8 @@ vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.conceallevel = 2
 vim.o.clipboard = "unnamedplus"
+vim.o.pumheight = 10
+
 -- vim.o.relativenumber = true
 vim.o.number = true
 -- vim.g.loaded_netrw       = 1
@@ -67,6 +70,7 @@ vim.keymap.set("n", "<Leader>a", ":lua vim.lsp.buf.rename()<CR>", { noremap = tr
 vim.keymap.set("n", "<Leader>c", ":lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Leader>k", ":lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Leader>h", ":Emmet ", { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>p", '"_', { noremap = true, silent = true })
 
 vim.diagnostic.config({
     virtual_text = true,
@@ -78,4 +82,36 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     callback = function()
         vim.bo.filetype = "wgsl"
     end,
+})
+
+local function open_image_with_xdg_open()
+    local file = vim.api.nvim_buf_get_name(0)
+    local extension = file:match("^.+(%..+)$")
+    if extension == ".png" then
+        os.execute("feh " .. file)
+        vim.cmd('bwipeout')
+    end
+end
+
+vim.api.nvim_create_autocmd("BufReadCmd", {
+    pattern = "*.png",
+    callback = open_image_with_xdg_open,
+})
+
+
+local function set_tab_size(ft, tabsize)
+  vim.cmd('autocmd FileType ' .. ft .. ' setlocal tabstop=' .. tabsize .. ' shiftwidth=' .. tabsize)
+end
+
+set_tab_size('c', 2)
+set_tab_size('cpp', 2)
+set_tab_size('c++', 2)
+set_tab_size('rust', 4)
+
+
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = {"*.frag", "*.vert"},
+  callback = function()
+    vim.bo.filetype = "glsl"
+  end
 })
