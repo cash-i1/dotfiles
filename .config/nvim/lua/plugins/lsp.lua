@@ -13,7 +13,7 @@ return {
         dependencies = "williamboman/mason.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "html", "pylsp", "zls", "ruby_lsp" }
+                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "pylsp", "zls" }
             })
         end
     },
@@ -35,13 +35,13 @@ return {
                 }
             })
             -- lsp_config.pylsp.setup({})
-            lsp_config.omnisharp.setup({})
-            lsp_config.wgsl_analyzer.setup({})
-            lsp_config.pyright.setup({})
+            -- lsp_config.omnisharp.setup({})
+            -- lsp_config.wgsl_analyzer.setup({})
+            -- lsp_config.pyright.setup({})
             lsp_config.clangd.setup({})
-            lsp_config.tsserver.setup({})
+            -- lsp_config.tsserver.setup({})
             lsp_config.zls.setup({})
-            lsp_config.gdscript.setup { on_attach = on_attach, flags = { debounce_text_changes = 150, } }
+            -- lsp_config.gdscript.setup { on_attach = on_attach, flags = { debounce_text_changes = 150, } }
 
             lsp_config.rust_analyzer.setup({
                 capabilities = lsp_capabilities,
