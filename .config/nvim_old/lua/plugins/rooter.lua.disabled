@@ -1,6 +1,0 @@
-return {
-    'oberblastmeister/rooter.nvim',
-    config = function()
-        require("rooter").setup()
-    end
-}
