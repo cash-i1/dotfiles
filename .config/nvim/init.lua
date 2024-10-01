@@ -32,6 +32,9 @@ require('luasnip.loaders.from_vscode').lazy_load()
 
 vim.g.zig_fmt_autosave = 0
 
+vim.g.gruvbox_contrast_dark='hard'
+vim.g.gruvbox_contrast_light='hard'
+
 -- Options
 vim.o.expandtab = true
 vim.o.tabstop = 4
@@ -45,6 +48,7 @@ vim.o.pumheight = 10
 vim.o.number = true
 -- vim.g.loaded_netrw       = 1
 -- vim.g.loaded_netrwPlugin = 1
+-- vim.o.guifont = "JetBrainsMono Nerd Font:style=Bold,Bold Italic:h16"
 vim.o.guifont = "JetBrainsMono Nerd Font:h16:b"
 -- vim.opt.guifont = { "JetBrainsMono Nerd Font", ":h14", ":b" }
 -- vim.opt.guifont =          { "Roboto Mono Medium", ":h14" }
@@ -111,7 +115,7 @@ set_tab_size('rust', 4)
 
 
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-  pattern = {"*.frag", "*.vert"},
+  pattern = {"*.frag", "*.vert", "*.glsl", "*.vs", "*.fs"},
   callback = function()
     vim.bo.filetype = "glsl"
   end

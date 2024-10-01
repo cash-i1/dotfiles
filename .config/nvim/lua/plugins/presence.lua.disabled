@@ -1,0 +1,36 @@
+return {
+    "andweeb/presence.nvim",
+    config = function()
+        local function censor(string, threshold)
+            if string == nil then
+                string = ""
+            end
+            local new_string = ""
+            for i = 1, #string do
+                if i > threshold then
+                    new_string = new_string .. "*"
+                else
+                    new_string = new_string .. string:sub(i, i)
+                end
+            end
+            return new_string
+        end
+
+        require("presence").setup({
+            neovim_image_text = "neovim", -- Text displayed when hovered over the Neovim image
+
+
+            editing_text        = function (filename)
+                return "editing " .. censor(filename, 4) 
+            end,
+            file_explorer_text  = "browsing",
+            git_commit_text     = "committing changes",
+            plugin_manager_text = "managing plugins",
+            reading_text        = "reading text",
+            workspace_text      = function(project_name, filename)
+                return "working on " .. censor(project_name, 4)
+            end,
+            line_number_text    = "line %s out of %s",
+        })
+    end
+}

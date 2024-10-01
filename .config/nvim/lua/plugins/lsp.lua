@@ -34,7 +34,7 @@ return {
                     }
                 }
             })
-            -- lsp_config.pylsp.setup({})
+            lsp_config.pylsp.setup({})
             -- lsp_config.omnisharp.setup({})
             -- lsp_config.wgsl_analyzer.setup({})
             -- lsp_config.pyright.setup({})
@@ -48,7 +48,7 @@ return {
                 settings = {
                     ['rust-analyzer'] = {
                         diagnostics = {
-                            enable = false,
+                            enable = true,
                         }
                     }
                 }

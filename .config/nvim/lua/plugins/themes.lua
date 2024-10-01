@@ -5,5 +5,5 @@ return {
     -- { "olimorris/onedarkpro.nvim", priority = 1000, config = true,  opts = ... },
     -- { "Mofiqul/vscode.nvim",       priority = 1000, config = true,  opts = ... },
     -- { "folke/tokyonight.nvim",     priority = 1000, config = true,  opts = ... },
-    -- { "sainnhe/gruvbox-material",  priority = 1000, config = true,  opts = ... },
+    { "sainnhe/gruvbox-material",  priority = 1000, config = true,  opts = ... },
 }
