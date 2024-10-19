@@ -4,12 +4,13 @@ pacman packages:
 ```bash
 sudo pacman -S \
     ttf-jetbrains-mono \
-    ripgrep \ # optional (for telescope)
-    clang \ # optional (for clangd)
-    stow \ # optional (for symlinking dotfiles)
     unzip \
     git \
     fish \
+
+    ripgrep \ # optional (for telescope)
+    clang \ # optional (for clangd)
+    stow \ # optional (for symlinking dotfiles)
 
 ```
 
