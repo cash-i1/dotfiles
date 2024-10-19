@@ -89,19 +89,19 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     end,
 })
 
-local function open_image_with_xdg_open()
-    local file = vim.api.nvim_buf_get_name(0)
-    local extension = file:match("^.+(%..+)$")
-    if extension == ".png" then
-        os.execute("feh " .. file)
-        vim.cmd('bwipeout')
-    end
-end
-
-vim.api.nvim_create_autocmd("BufReadCmd", {
-    pattern = "*.png",
-    callback = open_image_with_xdg_open,
-})
+-- local function open_image_with_xdg_open()
+--     local file = vim.api.nvim_buf_get_name(0)
+--     local extension = file:match("^.+(%..+)$")
+--     if extension == ".png" then
+--         os.execute("feh " .. file)
+--         vim.cmd('bwipeout')
+--     end
+-- end
+--
+-- vim.api.nvim_create_autocmd("BufReadCmd", {
+--     pattern = "*.png",
+--     callback = open_image_with_xdg_open,
+-- })
 
 
 local function set_tab_size(ft, tabsize)

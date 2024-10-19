@@ -11,11 +11,15 @@ return {
         workspaces = {
             {
                 name = "notestest",
-                path = "/home/cash/notestest",
+                path = "/media/chdd2/notes/newob",
+            },
+            {
+                name = "notestest",
+                path = "/tmp/obnsasd/",
             },
         },
         mappings = {
-            ["gf"] = {
+            ["<leader>r"] = {
                 action = function()
                     return require("obsidian").util.gf_passthrough()
                 end,

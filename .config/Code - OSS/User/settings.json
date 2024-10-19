@@ -20,7 +20,7 @@
     "editor.minimap.enabled": false,
     "vim.useSystemClipboard": true,
     "editor.stickyScroll.enabled": false,
-    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrap": "on",
     "editor.wordWrapColumn": 120,
     "editor.quickSuggestions": {
         "comments": "on",
