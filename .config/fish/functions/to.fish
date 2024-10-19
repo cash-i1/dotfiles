@@ -1,7 +1,8 @@
 function to
+    set paths /media/chdd2/dev/ /media/chdd2/code/* ~/.dotfiles /media/chdd2/*
     if test (count $argv) -gt 0
         set search_term $argv[1]
-        set available $(ls -d /media/chdd2/dev/ /media/chdd2/code/* ~/.dotfiles)
+        set available $(ls -d $paths)
 
         # see if selection is EMPTY
         if test -z "$available"
@@ -15,6 +16,6 @@ function to
             cd $selection
         end
     else
-        cd $(ls -d /media/chdd2/dev/ /media/chdd2/code/* ~/.dotfiles | fzf)
+        cd $(ls -d $paths | fzf)
     end
 end
