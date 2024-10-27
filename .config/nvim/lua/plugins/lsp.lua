@@ -34,6 +34,7 @@ return {
                     }
                 }
             })
+            lsp_config.denols.setup({});
             lsp_config.pylsp.setup({})
             -- lsp_config.omnisharp.setup({})
             -- lsp_config.wgsl_analyzer.setup({})

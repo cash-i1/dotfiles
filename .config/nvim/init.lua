@@ -120,3 +120,7 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
     vim.bo.filetype = "glsl"
   end
 })
+
+vim.g.markdown_fenced_languages = {
+  "ts=typescript"
+}
