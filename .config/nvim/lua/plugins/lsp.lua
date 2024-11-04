@@ -99,11 +99,11 @@ return {
                     -- hover = cmp.config.window.bordered(),
                 },
                 sources = {
-                    { name = "path",     priority = 10 },
-                    { name = "nvim_lsp", },
-                    { name = "nvim_lua", },
-                    { name = "buffer", },
-                    { name = "luasnip",  priority = -10 },
+                    -- { name = "path",     priority = 10 },
+                    -- { name = "nvim_lsp", },
+                    -- { name = "nvim_lua", },
+                    -- { name = "buffer", },
+                    -- { name = "luasnip",  priority = -10 },
                 },
 
             })
