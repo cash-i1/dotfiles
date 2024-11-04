@@ -104,14 +104,14 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 -- })
 
 
-local function set_tab_size(ft, tabsize)
-  vim.cmd('autocmd FileType ' .. ft .. ' setlocal tabstop=' .. tabsize .. ' shiftwidth=' .. tabsize)
-end
-
-set_tab_size('c', 2)
-set_tab_size('cpp', 2)
-set_tab_size('c++', 2)
-set_tab_size('rust', 4)
+-- local function set_tab_size(ft, tabsize)
+--   vim.cmd('autocmd FileType ' .. ft .. ' setlocal tabstop=' .. tabsize .. ' shiftwidth=' .. tabsize)
+-- end
+--
+-- set_tab_size('c', 2)
+-- set_tab_size('cpp', 2)
+-- set_tab_size('c++', 2)
+-- set_tab_size('rust', 4)
 
 
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {

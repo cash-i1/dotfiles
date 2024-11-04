@@ -34,14 +34,15 @@ return {
                     }
                 }
             })
-            lsp_config.denols.setup({});
+            -- lsp_config.denols.setup({});
             lsp_config.pylsp.setup({})
             -- lsp_config.omnisharp.setup({})
             -- lsp_config.wgsl_analyzer.setup({})
             -- lsp_config.pyright.setup({})
             lsp_config.clangd.setup({})
-            -- lsp_config.tsserver.setup({})
+            lsp_config.tsserver.setup({})
             lsp_config.zls.setup({})
+            lsp_config.intelephense.setup({})
             -- lsp_config.gdscript.setup { on_attach = on_attach, flags = { debounce_text_changes = 150, } }
 
             lsp_config.rust_analyzer.setup({
