@@ -39,7 +39,9 @@ return {
             -- lsp_config.omnisharp.setup({})
             -- lsp_config.wgsl_analyzer.setup({})
             -- lsp_config.pyright.setup({})
-            lsp_config.clangd.setup({})
+            lsp_config.clangd.setup({
+                cmd = { "clangd", "--compile-commands-dir=./", "--clang-tidy", "--clang-tidy-checks=-clang-diagnostic-pp_file_not_found" },
+            })
             lsp_config.tsserver.setup({})
             lsp_config.zls.setup({})
             lsp_config.intelephense.setup({})
@@ -99,10 +101,10 @@ return {
                     -- hover = cmp.config.window.bordered(),
                 },
                 sources = {
-                    -- { name = "path",     priority = 10 },
-                    -- { name = "nvim_lsp", },
-                    -- { name = "nvim_lua", },
-                    -- { name = "buffer", },
+                    { name = "path",     priority = 10 },
+                    { name = "nvim_lsp", },
+                    { name = "nvim_lua", },
+                    { name = "buffer", },
                     -- { name = "luasnip",  priority = -10 },
                 },
 

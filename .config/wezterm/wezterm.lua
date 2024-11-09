@@ -3,7 +3,7 @@ local wezterm = require 'wezterm'
 -- local config = wezterm.config_builder()
 local config = {}
 
-config.color_scheme = 'Campbell'
+-- config.color_scheme = 'Campbell'
 -- config.color_scheme = "Dark Pastel"
 -- config.color_scheme = "Dissonance"
 config.colors = {
@@ -36,7 +36,7 @@ config.animation_fps = 1
 config.cursor_blink_ease_in = 'Constant'
 config.cursor_blink_ease_out = 'Constant'
 
-config.max_fps = 144;
+config.max_fps = 200;
 config.default_cursor_style = "SteadyUnderline"
 
 config.cursor_thickness = "2pt"
