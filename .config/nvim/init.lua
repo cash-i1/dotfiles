@@ -27,6 +27,7 @@ require("lazy").setup("plugins", {
 -- Config
 -- Theme
 vim.cmd("colorscheme moonfly")
+-- vim.cmd("colorscheme lackluster-mint")
 -- Imports
 require('luasnip.loaders.from_vscode').lazy_load()
 

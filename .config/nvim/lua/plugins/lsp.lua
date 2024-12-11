@@ -13,7 +13,7 @@ return {
         dependencies = "williamboman/mason.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "pylsp", "zls" }
+                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "pylsp", "zls", "gopls" }
             })
         end
     },
@@ -36,11 +36,17 @@ return {
             })
             -- lsp_config.denols.setup({});
             lsp_config.pylsp.setup({})
+            lsp_config.gopls.setup({})
             -- lsp_config.omnisharp.setup({})
             -- lsp_config.wgsl_analyzer.setup({})
             -- lsp_config.pyright.setup({})
             lsp_config.clangd.setup({
-                cmd = { "clangd", "--compile-commands-dir=./", "--clang-tidy", "--clang-tidy-checks=-clang-diagnostic-pp_file_not_found" },
+                -- cmd = { "clangd", "--compile-commands-dir=./", "--clang-tidy", "--clang-tidy-checks=-clang-diagnostic-pp_file_not_found" },
+                -- cmd = { "clangd", "--compile-commands-dir=./", "--enable-config", "--project-root=./" },
+                --
+                -- THIS:
+                -- cmd = { "clangd", "--enable-config" }
+                cmd = { "clangd", "--log=verbose" }
             })
             lsp_config.tsserver.setup({})
             lsp_config.zls.setup({})
