@@ -1,17 +1,15 @@
 # dotfiles
 ## requirements
-pacman packages:
+brew packages:
 ```bash
-sudo pacman -S \
-    ttf-jetbrains-mono \
-    unzip \
-    git \
+brew install \
+    font-jetbrains-mono-nerd-font \
+    git \ # i think is installed automatically?
     fish \
 
     ripgrep \ # optional (for telescope)
     clang \ # optional (for clangd)
     stow \ # optional (for symlinking dotfiles)
-
 ```
 
 ## installation
