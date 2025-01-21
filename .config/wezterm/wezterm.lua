@@ -1,18 +1,12 @@
 local wezterm = require 'wezterm'
 
--- local config = wezterm.config_builder()
 local config = {}
 
--- config.color_scheme = 'Campbell'
--- config.color_scheme = "Dark Pastel"
--- config.color_scheme = "Dissonance"
 config.colors = {
     background = '#080808',
     cursor_bg = '#c6c6c6',
     cursor_fg = '#c6c6c6',
     cursor_border = '#c6c6c6',
-    -- the foreground color of selected text
-    -- the background color of selected text
     selection_bg = '#323437',
     selection_fg = 'none',
 }
@@ -24,9 +18,8 @@ config.window_padding = {
     bottom = 0,
 }
 
-config.font =
-    wezterm.font('JetBrains Mono NF', { weight = 'Bold' })
-config.font_size = 14;
+config.font = wezterm.font('JetBrainsMono Nerd Font')
+config.font_size = 20;
 
 config.front_end = "WebGpu"
 

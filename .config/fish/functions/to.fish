@@ -1,5 +1,5 @@
 function to
-    set paths /media/chdd2/dev/ /media/chdd2/code/* ~/.dotfiles /media/chdd2/*
+    set paths /Users/school/ /Users/school/* ~/.dotfiles
     if test (count $argv) -gt 0
         set search_term $argv[1]
         set available $(ls -d $paths)
