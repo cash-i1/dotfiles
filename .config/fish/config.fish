@@ -18,9 +18,12 @@ if status is-interactive
     set -x PATH /usr/lib/jvm/java-21-openjdk/bin/ $PATH
     # set -x PATH /home/cash/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-analyzer $PATH
     set -x EDITOR nvim
-    set -x JAVA_HOME /usr/lib/jvm/java-21-openjdk/bin/java
+    # set -x JAVA_HOME /usr/lib/jvm/java-21-openjdk/bin/java
+    set -x JAVA_HOME /usr/lib/jvm/java-21-openjdk
     set -x GTK_CSD 0
     set -x fish_history_limit 0
     
     alias edit $EDITOR
+
+    alias ts tmux-sessionizer
 end

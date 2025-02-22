@@ -13,7 +13,7 @@ return {
         dependencies = "williamboman/mason.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "pylsp", "zls", "gopls" }
+                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "pylsp", "zls", "gopls", "ts_ls", "cmake"}
             })
         end
     },
@@ -23,6 +23,10 @@ return {
         config = function()
             local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lsp_config = require("lspconfig")
+
+            lsp_config.hls.setup({
+                cmd = { "haskell-language-server", "--lsp" }
+            });
 
             lsp_config.lua_ls.setup({
                 capabilities = lsp_capabilities,
@@ -35,7 +39,25 @@ return {
                 }
             })
             -- lsp_config.denols.setup({});
-            lsp_config.pylsp.setup({})
+            -- lsp_config.pylsp.setup({})
+            require'lspconfig'.pylsp.setup{
+                settings = {
+                    pylsp = {
+                        configurationSources = {},
+                        plugins = {
+                            pycodestyle = { enabled = false },
+                            pydocstyle = { enabled = false },
+                            flake8 = { enabled = false },
+                            mccabe = { enabled = false },
+                            pylint = { enabled = false },
+                            yapf = { enabled = false },
+                            black = { enabled = false },
+                            autopep8 = { enabled = false },
+                        }
+                    }
+                }
+            }
+
             lsp_config.gopls.setup({})
             -- lsp_config.omnisharp.setup({})
             -- lsp_config.wgsl_analyzer.setup({})
@@ -48,7 +70,8 @@ return {
                 -- cmd = { "clangd", "--enable-config" }
                 cmd = { "clangd", "--log=verbose" }
             })
-            lsp_config.tsserver.setup({})
+            -- lsp_config.ts_ls.setup({})
+            -- lsp_config.tsserver.setup({})
             lsp_config.zls.setup({})
             lsp_config.intelephense.setup({})
             -- lsp_config.gdscript.setup { on_attach = on_attach, flags = { debounce_text_changes = 150, } }
@@ -63,6 +86,9 @@ return {
                     }
                 }
             })
+            lsp_config.kotlin_language_server.setup({});
+            lsp_config.cmake.setup({});
+            lsp_config.denols.setup({})
         end
     },
 

@@ -25,7 +25,8 @@ config.window_padding = {
 }
 
 config.font =
-    wezterm.font('JetBrains Mono NF', { weight = 'Bold' })
+    -- wezterm.font('JetBrains Mono NF', { weight = 'Bold' })
+    wezterm.font('JetBrains Mono NF')
 config.font_size = 14;
 
 config.front_end = "WebGpu"

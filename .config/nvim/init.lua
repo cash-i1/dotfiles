@@ -26,7 +26,8 @@ require("lazy").setup("plugins", {
 
 -- Config
 -- Theme
-vim.cmd("colorscheme moonfly")
+vim.cmd("colorscheme vscode")
+-- vim.cmd("colorscheme moonfly")
 -- vim.cmd("colorscheme lackluster-mint")
 -- Imports
 require('luasnip.loaders.from_vscode').lazy_load()
@@ -77,6 +78,7 @@ vim.keymap.set("n", "<Leader>c", ":lua vim.lsp.buf.code_action()<CR>", { noremap
 vim.keymap.set("n", "<Leader>k", ":lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Leader>h", ":Emmet ", { noremap = true, silent = true })
 vim.keymap.set("n", "<Leader>p", '"_', { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader><CR>", ":Telescope buffers<CR>")
 
 vim.diagnostic.config({
     virtual_text = true,

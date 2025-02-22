@@ -4,5 +4,6 @@
     "editor.renderWhitespace": "all",
     "editor.minimap.enabled": false,
     "workbench.editor.showTabs": "single",
-    "window.menuBarVisibility": "toggle"
+    "window.menuBarVisibility": "toggle",
+    "workbench.colorTheme": "GitHub Dark Default"
 }
