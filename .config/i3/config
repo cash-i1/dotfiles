@@ -1,22 +1,26 @@
 set $mod Mod4
 
 # Font
-font pango:monospace -5
+#font pango:monospace -5
+
+
+# monitors
+exec --no-startup-id xrandr --output HDMI-0 --mode 2560x1440 --rate 144 --left-of DP-0 --output DP-0 --auto  --primary
 
 # Keybindings
-bindsym $mod+Return exec alacritty
-bindsym $mod+d exec wofi --show drun
-bindsym $mod+Shift+q kill
+bindsym $mod+q exec alacritty
+bindsym $mod+r exec rofi -show drun
+bindsym $mod+c kill
 bindsym $mod+f fullscreen toggle
-bindsym $mod+Left focus left
-bindsym $mod+Right focus right
-bindsym $mod+Up focus up
-bindsym $mod+Down focus down
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Right move right
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+c reload
+bindsym $mod+h focus left
+bindsym $mod+l focus right
+bindsym $mod+k focus up
+bindsym $mod+j focus down
+bindsym $mod+Shift+l move left
+bindsym $mod+Shift+h move right
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+r reload
 bindsym $mod+Shift+e exec "i3-msg exit"
 
 # Layouts
