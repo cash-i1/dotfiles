@@ -69,16 +69,16 @@ local function map(mode, combo, what_to_do)
 end
 
 -- note: completion binds are in lua/plugins/lsp.lua because fuck that plugin
-map("n", "<leader>n", ":echo 'leave nvim and use a real file manager or just :e or telescope'<CR>")
-map("n", "<leader>f", ":Telescope find_files<CR>")
-map("n", "<leader>g", ":Telescope live_grep<CR>")
-map("n", "<leader><leader>", ":Telescope buffers<CR>")
-map("n", "<leader>d", ":lua vim.diagnostic.open_float()<CR>")
-map("n", "<leader>e", ":lua vim.lsp.buf.hover()<CR>")
-map("n", "<leader>r", ":lua vim.lsp.buf.definition()<CR>")
-map("n", "<leader>a", ":lua vim.lsp.buf.rename()<CR>")
-map("n", "<leader>c", ":lua vim.lsp.buf.code_action()<CR>")
-map("n", "<leader>k", ":lua vim.lsp.buf.references()<CR>")
+map("n", "<leader>n", ":echo 'leave nvim and use a real file manager or just :e or telescope'<cr>")
+map("n", "<leader>f", ":Telescope find_files<cr>")
+map("n", "<leader>g", ":Telescope live_grep<cr>")
+map("n", "<leader><leader>", ":Telescope buffers<cr>")
+map("n", "<leader>d", ":lua vim.diagnostic.open_float()<cr>")
+map("n", "<leader>e", ":lua vim.lsp.buf.hover()<cr>")
+map("n", "<leader>r", ":lua vim.lsp.buf.definition()<cr>")
+map("n", "<leader>a", ":lua vim.lsp.buf.rename()<cr>")
+map("n", "<leader>c", ":lua vim.lsp.buf.code_action()<cr>")
+map("n", "<leader>k", ":lua vim.lsp.buf.references()<cr>")
 
 -- TODO: make a thing where it looks in the current
 --       dir for a file named '.run' and runs the
@@ -86,11 +86,11 @@ map("n", "<leader>k", ":lua vim.lsp.buf.references()<CR>")
 -- map("n", "<leader><leader>", ":!make -j<CR>")
 
 -- TODO: this doesnt work
-map('c', '<C-h>', '<left>')
-map('c', '<C-l>', '<right>')
-map('c', '<C-k>', '<up>')
-map('c', '<C-j>', '<down>')
+map('c', '<c-h>', '<left>')
+map('c', '<c-l>', '<right>')
+map('c', '<c-k>', '<up>')
+map('c', '<c-j>', '<down>')
 
-map("n", "<S-k>", ":bnext<CR>")
-map("n", "<S-j>", ":bprev<CR>")
+map("n", "<s-l>", ":bnext<CR>")
+map("n", "<s-h>", ":bprev<CR>")
 
