@@ -62,41 +62,4 @@ vim.opt.pumheight = 8
 vim.keymap.set("n", "<leader><leader>", ":source ~/.config/nvim_si/init.lua<CR>")
 vim.keymap.set("n", "<S-l>", ":bnext<CR>")
 vim.keymap.set("n", "<S-j>", ":bprev<CR>")
-
-local cmp = require("cmp")
-local luasnip = require("luasnip")
-
-local mappings = cmp.get_config().mapping or {}
-
-mappings["<C-b>"] = cmp.mapping.scroll_docs(-4)
-mappings["<C-f>"] = cmp.mapping.scroll_docs(4)
-
-mappings["<C-k>"] = cmp.mapping(function(fallback)
-    cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select })(fallback)
-end, { "i", "s" })
-
-mappings["<C-k>"] = cmp.mapping(function(fallback)
-    if luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-    else
-        fallback()
-    end
-end, { "i", "s" })
-
-mappings["<C-j>"] = cmp.mapping(function(fallback)
-    cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select })(fallback)
-end, { "i", "s" })
-
-mappings["<C-j>"] = cmp.mapping(function(fallback)
-    if luasnip.jumpable(1) then
-        luasnip.jump(1)
-    else
-        fallback()
-    end
-end, { "i", "s" })
-
-mappings["<CR>"] = cmp.mapping.confirm({ select = true })
-
-cmp.setup({
-    mapping = mappings
-})
+-- note: completion binds are in lua/plugins/lsp.lua because fuck that plugin

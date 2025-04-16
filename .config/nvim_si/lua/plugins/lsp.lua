@@ -13,15 +13,27 @@ return {
         "saadparwaiz1/cmp_luasnip",
     },
 
+    -- some of the mapping shit was made by chatgpt, sorry.
+    -- i should use blink.cmp instead
     config = function()
+        local has_words_before = function()
+            -- lua lsp says its deprectated but it works so fuck that
+            local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+            return col ~= 0 and
+            vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+        end
+
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
+        local luasnip = require("luasnip")
+
         local capabilities = vim.tbl_deep_extend(
             "force",
             {},
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities()
         )
+        
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
@@ -40,13 +52,44 @@ return {
         cmp.setup({
             snippet = {
                 expand = function(args)
-                    require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                    luasnip.lsp_expand(args.body)
                 end,
             },
             sources = cmp.config.sources(
                 {{ name = 'nvim_lsp' }, { name = "luasnip" }},
                 {{ name = 'buffer' }}
-            )
+            ),
+            mapping = {
+                ["<Tab>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_next_item()
+                    elseif luasnip.jumpable(1) then
+                        luasnip.jump(1)
+                    elseif has_words_before() then
+                        cmp.complete()
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
+
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_prev_item()
+                    elseif luasnip.jumpable(-1) then
+                        luasnip.jump(-1)
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
+
+                ["<C-n>"] = cmp.mapping.select_next_item(),
+                ["<C-p>"] = cmp.mapping.select_prev_item(),
+
+                ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                ["<C-f>"] = cmp.mapping.scroll_docs(4),
+
+                ["<CR>"] = cmp.mapping.confirm({ select = true }),
+            }
         })
 
         vim.diagnostic.config({
