@@ -14,6 +14,13 @@ return {
     -- }
     -- { "nuvic/flexoki-nvim", name = "flexoki" }
     { "Mofiqul/vscode.nvim", lazy = false, priority = 100, opts = {}},
-    { 'projekt0n/github-nvim-theme', name = 'github-theme' }
+    { 'projekt0n/github-nvim-theme', name = 'github-theme' },
 
+    { 'ribru17/bamboo.nvim', priority = 1000 },
+    {   "xero/miasma.nvim", },
+    { "EdenEast/nightfox.nvim" },
+    { 'luisiacc/gruvbox-baby' },
+    { "oonamo/ef-themes.nvim" },
+    { "utensils/colors.vim" },
 }
+

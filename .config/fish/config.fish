@@ -26,4 +26,8 @@ if status is-interactive
     alias edit $EDITOR
 
     alias ts tmux-sessionizer
+
+    set -xa PATH ~/bin
+    set -xa PATH ~/.nimble/bin/
+    set -x NIM_HOME /usr/lib/nim
 end

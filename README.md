@@ -7,6 +7,7 @@ sudo pacman -S \
     unzip \
     git \
     fish \
+    npm \
 
     ripgrep \ # optional (for telescope)
     clang \ # optional (for clangd)

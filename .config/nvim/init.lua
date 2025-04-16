@@ -127,3 +127,5 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 vim.g.markdown_fenced_languages = {
   "ts=typescript"
 }
+
+vim.g.neovide_cursor_animation_length = 0

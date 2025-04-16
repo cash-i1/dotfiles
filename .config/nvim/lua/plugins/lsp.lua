@@ -13,7 +13,7 @@ return {
         dependencies = "williamboman/mason.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "pylsp", "zls", "gopls", "ts_ls", "cmake"}
+                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "pylsp", "gopls", "ts_ls", "cmake"}
             })
         end
     },
@@ -58,6 +58,9 @@ return {
                 }
             }
 
+            lsp_config.nim_langserver.setup({
+                cmd = { "NIM_HOME=\"/usr/lib/nim\"", "/home/cash/.nimble/pkgs2/nimlangserver-1.10.2-0367e471e87e1eea8bfef5461db8905591186855/nimlangserver" }
+            })
             lsp_config.gopls.setup({})
             -- lsp_config.omnisharp.setup({})
             -- lsp_config.wgsl_analyzer.setup({})
@@ -72,7 +75,9 @@ return {
             })
             -- lsp_config.ts_ls.setup({})
             -- lsp_config.tsserver.setup({})
-            lsp_config.zls.setup({})
+            lsp_config.zls.setup({
+                cmd = { "zls" }
+            })
             lsp_config.intelephense.setup({})
             -- lsp_config.gdscript.setup { on_attach = on_attach, flags = { debounce_text_changes = 150, } }
 
