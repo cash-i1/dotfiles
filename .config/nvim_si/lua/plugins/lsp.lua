@@ -43,9 +43,15 @@ return {
             },
             handlers = {
                 function(server_name)
-                    require("lspconfig")[server_name].setup {
-                        capabilities = capabilities
-                    }
+                    -- using this table so i can add random edge cases in
+                    local s = {}
+                    s.capabilities = capabilities
+
+                    if server_name == "rust-analyzer" then
+                        s.settings["rust-analyzer"].diagnostics.enable = true
+                    end
+
+                    require("lspconfig")[server_name].setup({s})
                 end,
             }
         })
