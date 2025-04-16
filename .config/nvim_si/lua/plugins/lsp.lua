@@ -51,6 +51,10 @@ return {
                         s.settings["rust-analyzer"].diagnostics.enable = true
                     end
 
+                    if server_name == "nimlangserver" then
+                        s.cmd = { "nimlangserver" }
+                    end
+
                     require("lspconfig")[server_name].setup({s})
                 end,
             }
