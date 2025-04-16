@@ -107,14 +107,6 @@ return {
                 prefix = ">"
                 -- prefix = "■",
             },
-            -- float = {
-            --     focusable = false,
-            --     style = "minimal",
-            --     border = "rounded",
-            --     source = "always",
-            --     header = "",
-            --     prefix = "",
-            -- },
         })
     end
 }
