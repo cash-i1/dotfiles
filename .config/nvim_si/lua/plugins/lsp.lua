@@ -33,12 +33,13 @@ return {
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities()
         )
-        
+
+        -- TODO: get rid of mason. use system install of lsp's
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "clangd"
+                "clangd",
             },
             handlers = {
                 function(server_name)

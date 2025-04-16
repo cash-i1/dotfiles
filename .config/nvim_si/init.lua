@@ -59,7 +59,18 @@ vim.opt.termguicolors = true
 vim.opt.wildmenu = true
 vim.opt.pumheight = 8
 
-vim.keymap.set("n", "<leader><leader>", ":source ~/.config/nvim_si/init.lua<CR>")
+-- note: completion binds are in lua/plugins/lsp.lua because fuck that plugin
+vim.keymap.set("n", "<leader>n", ":echo 'leave nvim and use yazi'<CR>")
+vim.keymap.set("n", "<leader>f", ":Telescope find_files<CR>")
+vim.keymap.set("n", "<leader>g", ":Telescope live_grep<CR>")
+vim.keymap.set("n", "<leader><leader>", ":Telescope buffers<CR>")
+vim.keymap.set("n", "<leader>d", ":lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>e", ":lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>r", ":lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>a", ":lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>c", ":lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>k", ":lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
+
 vim.keymap.set("n", "<S-l>", ":bnext<CR>")
 vim.keymap.set("n", "<S-j>", ":bprev<CR>")
--- note: completion binds are in lua/plugins/lsp.lua because fuck that plugin
+
