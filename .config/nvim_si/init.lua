@@ -23,6 +23,7 @@ require("lazy").setup({
     spec = {
         { import = "plugins" },
     },
+    -- concurrency = vim.uv.available_parallelism(),
     checker = { enabled = false },
     change_detection = {
         enabled = false,
@@ -30,9 +31,13 @@ require("lazy").setup({
     }
 })
 
-vim.cmd("colo vscode")
+vim.cmd("colo ef-winter")
 
 -- use `:h option-list` to see what these do
+vim.opt.textwidth = 80
+vim.opt.wrapmargin = 0
+vim.opt.formatoptions:append("t")
+vim.opt.linebreak = true
 vim.opt.colorcolumn = "80"
 vim.opt.title = true
 vim.opt.syntax = "ON"
@@ -57,6 +62,7 @@ vim.opt.splitright = true
 vim.opt.termguicolors = true
 vim.opt.wildmenu = true
 vim.opt.pumheight = 8
+vim.opt.cmdwinheight = 1
 
 local function map(mode, combo, what_to_do)
     vim.keymap.set(mode, combo, what_to_do, { noremap = true, silent = true })
@@ -74,8 +80,16 @@ map("n", "<leader>a", ":lua vim.lsp.buf.rename()<CR>")
 map("n", "<leader>c", ":lua vim.lsp.buf.code_action()<CR>")
 map("n", "<leader>k", ":lua vim.lsp.buf.references()<CR>")
 
+-- TODO: make a thing where it looks in the current
+--       dir for a file named '.run' and runs the
+--       command inside of it
+-- map("n", "<leader><leader>", ":!make -j<CR>")
+
+-- TODO: this doesnt work
 map('c', '<C-h>', '<left>')
 map('c', '<C-l>', '<right>')
+map('c', '<C-k>', '<up>')
+map('c', '<C-j>', '<down>')
 
 map("n", "<S-k>", ":bnext<CR>")
 map("n", "<S-j>", ":bprev<CR>")
