@@ -55,6 +55,16 @@ return {
                         s.cmd = { "nimlangserver" }
                     end
 
+                    if server_name == "lua_ls" then
+                        s.settings = {
+                            Lua = {
+                                diagnostics = {
+                                    globals = { "vim" }
+                                }
+                            }
+                        }
+                    end
+
                     require("lspconfig")[server_name].setup({s})
                 end,
             }

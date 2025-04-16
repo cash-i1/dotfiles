@@ -63,6 +63,10 @@ vim.opt.termguicolors = true
 vim.opt.wildmenu = true
 vim.opt.pumheight = 8
 vim.opt.cmdwinheight = 1
+vim.opt.backup = true
+vim.opt.backupdir = vim.fn.stdpath('cache') .. "/backup"
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath('cache') .. "/undo"
 
 local function map(mode, combo, what_to_do)
     vim.keymap.set(mode, combo, what_to_do, { noremap = true, silent = true })
