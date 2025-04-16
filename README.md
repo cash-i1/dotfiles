@@ -8,6 +8,7 @@ sudo pacman -S \
     git \
     fish \
     npm \
+    catimg  # for telescope image preview
 
     ripgrep \ # optional (for telescope)
     clang \ # optional (for clangd)
