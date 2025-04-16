@@ -95,6 +95,11 @@ return {
         vim.diagnostic.config({
             signs = false,
             update_in_insert = true,
+            virtual_text = {
+                spacing = 2,
+                prefix = ">"
+                -- prefix = "■",
+            },
             -- float = {
             --     focusable = false,
             --     style = "minimal",
