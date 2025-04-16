@@ -43,6 +43,8 @@ return {
             },
             handlers = {
                 function(server_name)
+                    -- TODO: you dont need this everything is in s.settings
+                    --       anyway
                     -- using this table so i can add random edge cases in
                     local s = {}
                     s.capabilities = capabilities
@@ -65,7 +67,7 @@ return {
                         }
                     end
 
-                    require("lspconfig")[server_name].setup({s})
+                    require("lspconfig")[server_name].setup(s)
                 end,
             }
         })
