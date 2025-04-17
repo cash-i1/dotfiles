@@ -31,7 +31,8 @@ require("lazy").setup({
     }
 })
 
-vim.cmd("colo ef-winter")
+-- vim.cmd("colo ef-winter")
+vim.cmd("colo vscode")
 
 -- use `:h option-list` to see what these do
 vim.opt.textwidth = 80
@@ -72,10 +73,13 @@ local function map(mode, combo, what_to_do)
     vim.keymap.set(mode, combo, what_to_do, { noremap = true, silent = true })
 end
 
+-- TODO: maybe move all binds to their plugin lua files for idiomatics
 -- note: completion binds are in lua/plugins/lsp.lua because fuck that plugin
-map("n", "<leader>n", ":echo 'leave nvim and use a real file manager or just :e or telescope'<cr>")
-map("n", "<leader>f", ":Telescope find_files<cr>")
-map("n", "<leader>g", ":Telescope live_grep<cr>")
+-- note: comment binds in lua/plugins/comment.lua because idk
+-- map("n", "<leader>n", ":echo 'leave nvim and use a real file manager or just :e or telescope'<cr>")
+map("n", "<leader>n", ":Neotree toggle<CR>")
+map("n", "<leader>f", ":lua require('telescope.builtin').find_files({hidden=true})<cr>")
+map("n", "<leader>g", ":lua require('telescope.builtin').live_grep({hidden=true})<cr>")
 map("n", "<leader><leader>", ":Telescope buffers<cr>")
 map("n", "<leader>d", ":lua vim.diagnostic.open_float()<cr>")
 map("n", "<leader>e", ":lua vim.lsp.buf.hover()<cr>")

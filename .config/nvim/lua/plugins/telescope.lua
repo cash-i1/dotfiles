@@ -3,10 +3,13 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function ()
         require("telescope").setup({
+            hidden = true,
             defaults = {
                 file_ignore_patterns = {
                     "^ext/",
+                    "^.git/"
                 },
+                hidden = true,
                 -- https://github.com/nvim-telescope/telescope.nvim/wiki/Configuration-Recipes#use-terminal-image-viewer-to-preview-images
                 preview = {
                     mime_hook = function(filepath, bufnr, opts)

@@ -33,13 +33,14 @@ return {
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities()
         )
-
-        -- TODO: get rid of mason. use system install of lsp's
+-- TODO: get rid of mason. use system install of lsp's
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
                 "clangd",
+                -- "nim_langserver",
+                -- "nimlsp",
             },
             handlers = {
                 function(server_name)
@@ -78,15 +79,14 @@ return {
                     luasnip.lsp_expand(args.body)
                 end,
             },
-            sources = cmp.config.sources(
-                {{ name = 'nvim_lsp' }, { name = "luasnip" }},
-                {{ name = 'buffer' }}
-            ),
+            sources = cmp.config.sources({
+                { name = 'path', option = { show_hidden = true } },
+                { name = 'nvim_lsp' }, { name = "luasnip" },
+                { name = 'buffer' },
+            }),
             mapping = {
                 ["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                    elseif luasnip.jumpable(1) then
+                    if luasnip.jumpable(1) then
                         luasnip.jump(1)
                     elseif has_words_before() then
                         cmp.complete()
@@ -96,9 +96,7 @@ return {
                 end, { "i", "s" }),
 
                 ["<S-Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    elseif luasnip.jumpable(-1) then
+                    if luasnip.jumpable(-1) then
                         luasnip.jump(-1)
                     else
                         fallback()
