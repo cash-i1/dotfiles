@@ -30,4 +30,5 @@ if status is-interactive
     set -xa PATH ~/bin
     set -xa PATH ~/.nimble/bin/
     set -x NIM_HOME /usr/lib/nim
+    set -x NIM_LIB_PATH /usr/lib/nim
 end
