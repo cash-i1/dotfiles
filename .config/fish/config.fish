@@ -15,4 +15,11 @@ if status is-interactive
     set -x fish_history_limit 0
     
     alias edit $EDITOR
+
+    alias ts tmux-sessionizer
+
+    set -xa PATH ~/bin
+    set -xa PATH ~/.nimble/bin/
+    set -x NIM_HOME /usr/lib/nim
+    set -x NIM_LIB_PATH /usr/lib/nim
 end

@@ -1,127 +1,104 @@
--- Map Leader Keys
--- has to be set before lazy is loaded
-vim.g.mapleader = ","
-vim.g.maplocalleader = ",,"
-
--- Lazy
+-- lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+            { out, "WarningMsg" },
+            { "\nPress any key to exit..." },
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
+    end
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Load Plugins
-require("lazy").setup("plugins", {
+-- leader keys
+vim.g.mapleader = ","
+vim.g.maplocalleader = ",,"
+
+require("lazy").setup({
+    spec = {
+        { import = "plugins" },
+    },
+    -- concurrency = vim.uv.available_parallelism(),
+    checker = { enabled = false },
     change_detection = {
+        enabled = false,
         notify = false,
     }
 })
 
--- Config
--- Theme
-vim.cmd("colorscheme moonfly")
--- vim.cmd("colorscheme lackluster-mint")
--- Imports
-require('luasnip.loaders.from_vscode').lazy_load()
+-- vim.cmd("colo ef-winter")
+vim.cmd("colo vscode")
 
-vim.g.zig_fmt_autosave = 0
-
-vim.g.gruvbox_contrast_dark='hard'
-vim.g.gruvbox_contrast_light='hard'
-
--- Options
-vim.o.expandtab = true
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
-vim.o.conceallevel = 2
-vim.o.clipboard = "unnamedplus"
-vim.o.pumheight = 10
-
--- vim.o.relativenumber = true
-vim.o.number = true
--- vim.g.loaded_netrw       = 1
--- vim.g.loaded_netrwPlugin = 1
--- vim.o.guifont = "JetBrainsMono Nerd Font:style=Bold,Bold Italic:h16"
-vim.o.guifont = "JetBrainsMono Nerd Font:h16:b"
--- vim.opt.guifont = { "JetBrainsMono Nerd Font", ":h14", ":b" }
--- vim.opt.guifont =          { "Roboto Mono Medium", ":h14" }
-vim.opt.signcolumn = "no"
-vim.opt.backup = true
-vim.opt.backupdir = os.getenv 'HOME' .. "/.cache/nvim/backup"
-vim.opt.undofile = true
-vim.opt.undodir = os.getenv 'HOME' .. "/.cache/nvim/undo"
-vim.opt.autoindent = true
+-- use `:h option-list` to see what these do
+vim.opt.textwidth = 80
+vim.opt.wrapmargin = 0
+vim.opt.formatoptions:append("t")
+vim.opt.linebreak = true
+vim.opt.colorcolumn = "80"
+vim.opt.title = true
+vim.opt.syntax = "ON"
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.mouse = 'a'
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 vim.opt.smartindent = true
+vim.opt.cindent = true
+vim.opt.showcmd = true
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
+vim.opt.clipboard = "unnamedplus"
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.termguicolors = true
+vim.opt.wildmenu = true
+vim.opt.pumheight = 8
+vim.opt.cmdwinheight = 1
+vim.opt.backup = true
+vim.opt.backupdir = vim.fn.stdpath('cache') .. "/backup"
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath('cache') .. "/undo"
 
--- Keybinds
-vim.keymap.set({ 'n', 'v', 'i' }, '<C-s>', '<cmd>wa<cr>')
-vim.keymap.set("n", "<Leader>n", ":Neotree toggle<CR>")
--- vim.keymap.set("n", "<Esc>", ":q<CR>")
-vim.keymap.set("n", "<Leader><Esc>", ":qa<CR>")
-vim.keymap.set("n", "<Leader><Space>", ":qa<CR>")
-vim.keymap.set("n", "<Leader>f", ":Telescope find_files<CR>")
-vim.keymap.set("n", "<Leader>g", ":Telescope live_grep<CR>")
-vim.keymap.set("n", "<Leader>d", ":lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<Leader>e", ":lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<Leader>r", ":lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<Leader>a", ":lua vim.lsp.buf.rename()<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<Leader>c", ":lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<Leader>k", ":lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<Leader>h", ":Emmet ", { noremap = true, silent = true })
-vim.keymap.set("n", "<Leader>p", '"_', { noremap = true, silent = true })
+local function map(mode, combo, what_to_do)
+    vim.keymap.set(mode, combo, what_to_do, { noremap = true, silent = true })
+end
 
-vim.diagnostic.config({
-    virtual_text = true,
-    update_in_insert = true,
-})
+-- TODO: maybe move all binds to their plugin lua files for idiomatics
+-- note: completion binds are in lua/plugins/lsp.lua because fuck that plugin
+-- note: comment binds in lua/plugins/comment.lua because idk
+-- map("n", "<leader>n", ":echo 'leave nvim and use a real file manager or just :e or telescope'<cr>")
+map("n", "<leader>n", ":Neotree toggle<CR>")
+map("n", "<leader>f", ":lua require('telescope.builtin').find_files({hidden=true})<cr>")
+map("n", "<leader>g", ":lua require('telescope.builtin').live_grep({hidden=true})<cr>")
+map("n", "<leader><leader>", ":Telescope buffers<cr>")
+map("n", "<leader>d", ":lua vim.diagnostic.open_float()<cr>")
+map("n", "<leader>e", ":lua vim.lsp.buf.hover()<cr>")
+map("n", "<leader>r", ":lua vim.lsp.buf.definition()<cr>")
+map("n", "<leader>a", ":lua vim.lsp.buf.rename()<cr>")
+map("n", "<leader>c", ":lua vim.lsp.buf.code_action()<cr>")
+map("n", "<leader>k", ":lua vim.lsp.buf.references()<cr>")
 
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*.wgsl",
-    callback = function()
-        vim.bo.filetype = "wgsl"
-    end,
-})
+-- TODO: make a thing where it looks in the current
+--       dir for a file named '.run' and runs the
+--       command inside of it
+-- map("n", "<leader><leader>", ":!make -j<CR>")
 
--- local function open_image_with_xdg_open()
---     local file = vim.api.nvim_buf_get_name(0)
---     local extension = file:match("^.+(%..+)$")
---     if extension == ".png" then
---         os.execute("feh " .. file)
---         vim.cmd('bwipeout')
---     end
--- end
---
--- vim.api.nvim_create_autocmd("BufReadCmd", {
---     pattern = "*.png",
---     callback = open_image_with_xdg_open,
--- })
+-- TODO: this doesnt work
+map('c', '<c-h>', '<left>')
+map('c', '<c-l>', '<right>')
+map('c', '<c-k>', '<up>')
+map('c', '<c-j>', '<down>')
 
+map("n", "<s-l>", ":bnext<CR>")
+map("n", "<s-h>", ":bprev<CR>")
 
--- local function set_tab_size(ft, tabsize)
---   vim.cmd('autocmd FileType ' .. ft .. ' setlocal tabstop=' .. tabsize .. ' shiftwidth=' .. tabsize)
--- end
---
--- set_tab_size('c', 2)
--- set_tab_size('cpp', 2)
--- set_tab_size('c++', 2)
--- set_tab_size('rust', 4)
-
-
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-  pattern = {"*.frag", "*.vert", "*.glsl", "*.vs", "*.fs"},
-  callback = function()
-    vim.bo.filetype = "glsl"
-  end
-})
-
-vim.g.markdown_fenced_languages = {
-  "ts=typescript"
-}

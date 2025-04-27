@@ -6,6 +6,8 @@ brew install \
     font-jetbrains-mono-nerd-font \
     git \ # i think is installed automatically?
     fish \
+    npm \
+    catimg  # for telescope image preview
 
     ripgrep \ # optional (for telescope)
     clang \ # optional (for clangd)
