@@ -13,7 +13,7 @@ return {
         dependencies = "williamboman/mason.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "pylsp", "zls", "gopls" }
+                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "pylsp", "zls" }
             })
         end
     },
@@ -36,7 +36,7 @@ return {
             })
             -- lsp_config.denols.setup({});
             lsp_config.pylsp.setup({})
-            lsp_config.gopls.setup({})
+            -- lsp_config.gopls.setup({})
             -- lsp_config.omnisharp.setup({})
             -- lsp_config.wgsl_analyzer.setup({})
             -- lsp_config.pyright.setup({})
