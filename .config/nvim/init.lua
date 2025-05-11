@@ -32,7 +32,8 @@ require("lazy").setup({
 })
 
 -- vim.cmd("colo ef-winter")
-vim.cmd("colo vscode")
+-- vim.cmd("colo vscode")
+vim.cmd("colo kanagawa")
 
 -- use `:h option-list` to see what these do
 vim.opt.textwidth = 80

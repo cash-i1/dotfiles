@@ -5,7 +5,7 @@ return {
         require("toggleterm").setup({
             -- TODO: put this in init.lua?
             open_mapping = [[<c-/>]],
-            direction = "right",
+            direction = "float",
             size = 55,
         })
     end,
