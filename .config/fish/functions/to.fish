@@ -17,6 +17,9 @@ function to
             cd $selection
         end
     else
-        cd $(ls -d $paths | fzf)
+        set path (ls -d $paths | fzf)
+        if test (count "$path") -gt 0
+            cd $path
+        end
     end
 end

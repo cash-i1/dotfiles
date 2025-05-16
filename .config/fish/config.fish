@@ -4,6 +4,7 @@ if status is-interactive
     bind ctrl-delete kill-word
     bind ctrl-backspace backward-kill-word
     bind ctrl-w backward-kill-word
+    bind ctrl-f to
 
     # vars
     set -x EDITOR nvim
@@ -17,7 +18,10 @@ if status is-interactive
     set -xa PATH /home/cash/.cargo/bin
     set -xa PATH ~/bin
     set -xa PATH ~/.nimble/bin/
+    set -xa PATH ~/scripts/
 
     # aliases
     alias neovide "neovide --fork"
+    alias pacman "pacman --color=auto"
+    alias paru "paru --color=auto"
 end
