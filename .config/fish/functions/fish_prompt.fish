@@ -1,32 +1,18 @@
 function fish_prompt
+    # so python venv doesn't break the prompt
     if not set -q VIRTUAL_ENV_DISABLE_PROMPT
         set -g VIRTUAL_ENV_DISABLE_PROMPT true
     end
-    set_color yellow
-    printf '%s' $USER
-    set_color normal
-    # printf ' at '
-    
-    set_color red
-    printf '@'
-    set_color normal
-
-    set_color magenta
-    echo -n (prompt_hostname)
-    set_color normal
-    # printf ' in '
-    #
-    printf ' '
-
-    set_color $fish_color_cwd
-    printf '%s' (prompt_pwd)
-    set_color normal
-
-    # Line 2
-    # echo
     if test -n "$VIRTUAL_ENV"
-        printf "(%s) " (set_color blue)(basename $VIRTUAL_ENV)(set_color normal)
+        echo -n "("(set_color blue)(basename $VIRTUAL_ENV)(set_color normal)") "
     end
-    printf '$ '
+
+    echo -n (set_color yellow)$USER
+    echo -n (set_color red)'@'
+    echo -n (set_color magenta)(prompt_hostname)
+    echo -n " "
+    echo -n (set_color green)(prompt_pwd)
+    echo -n (set_color white)'$ '
+
     set_color normal
 end
