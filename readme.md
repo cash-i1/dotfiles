@@ -18,5 +18,5 @@ sudo pacman -S \
 
 ## installation
 run this one liner and it should work (not tested). **requires GNU Stow**
-`cd; git clone https://github.com/cash-i1/dotfiles.git .dotfiles; cd .dotfiles; stow .`
+`cd && git clone https://github.com/cash-i1/dotfiles.git .dotfiles && cd .dotfiles && stow .`
 
