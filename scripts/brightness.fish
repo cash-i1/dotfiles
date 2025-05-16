@@ -9,14 +9,14 @@ if not test -f "/tmp/current_brightness"
     )" > "/tmp/current_brightness"
 end
 
+# get the current brightness level
+set current (cat /tmp/current_brightness)
+
 # if there is no args, echo the brightness and quit
 if test -z $argv[1]
     echo "bri $current%"
     exit 0
 end
-
-# get the current brightness level
-set current (cat /tmp/current_brightness)
 
 # inc. or decr. the brightness
 if test (string lower $argv[1]) = "up"
