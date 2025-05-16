@@ -1,39 +1,37 @@
+# vars
 set $mod Mod4
+set $left h
+set $right l 
+set $up k
+set $down j
 
-# Font
-#font pango:monospace -5
+# font
+font pango:monospace
 
+# execs
+exec --no-startup-id \
+    xrandr --output HDMI-0 --mode 2560x1440 --rate 144 --primary 
+exec redshift -PO 3500
+exec_always --no-startup-id "polybar-msg cmd quit; polybar"
+# exec_always --no-startup-id "i3-nagbar -m 'SIGMA'"
 
-# monitors
-exec --no-startup-id xrandr --output HDMI-0 --mode 2560x1440 --rate 144 --left-of DP-0 --output DP-0 --auto  --primary
-
-# Keybindings
+# keybindings
 bindsym $mod+q exec alacritty
 bindsym $mod+r exec rofi -show drun
 bindsym $mod+c kill
 bindsym $mod+f fullscreen toggle
-bindsym $mod+h focus left
-bindsym $mod+l focus right
-bindsym $mod+k focus up
-bindsym $mod+j focus down
-bindsym $mod+Shift+l move left
-bindsym $mod+Shift+h move right
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+r reload
+bindsym $mod+$left focus left
+bindsym $mod+$right focus right
+bindsym $mod+$up focus up
+bindsym $mod+$down focus down
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$down move down
+# TODO: make another bind for reload
+bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-msg exit"
 
-# Layouts
-# workspace 0 output HDMI-1
-# workspace 2 output HDMI-1
-# workspace 3 output HDMI-1
-# workspace 4 output HDMI-1
-# workspace 5 output HDMI-1
-# workspace 6 output HDMI-1
-# workspace 7 output HDMI-1
-# workspace 8 output HDMI-1
-# workspace 9 output HDMI-1
-# workspace 10 output HDMI-1
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
@@ -45,13 +43,37 @@ bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
 
+bindsym $mod+Shift+1 move window to workspace number 1
+bindsym $mod+Shift+2 move window to workspace number 2
+bindsym $mod+Shift+3 move window to workspace number 3
+bindsym $mod+Shift+4 move window to workspace number 4
+bindsym $mod+Shift+5 move window to workspace number 5
+bindsym $mod+Shift+6 move window to workspace number 6
+bindsym $mod+Shift+7 move window to workspace number 7
+bindsym $mod+Shift+8 move window to workspace number 8
+bindsym $mod+Shift+9 move window to workspace number 9
+bindsym $mod+Shift+0 move window to workspace number 10
 
-# Floating Modifier
+
+# floating Modifier
 floating_modifier $mod
 
-# Status Bar
+# status bar
 bar {
-    status_command i3status
-    font pango:monospace 10
+    mode invisible
+    # status_command i3status
+    # font pango:monospace 10
 }
 
+mode "resize" {
+        bindsym $left resize shrink width 10 px or 10 ppt
+        bindsym $down resize grow height 10 px or 10 ppt
+        bindsym $up resize shrink height 10 px or 10 ppt
+        bindsym $right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+v mode "default"
+}
+
+bindsym $mod+v mode "resize"
