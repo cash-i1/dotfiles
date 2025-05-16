@@ -1,9 +1,0 @@
-{
-    "window.titleBarStyle": "custom",
-    "workbench.activityBar.location": "hidden",
-    "editor.renderWhitespace": "all",
-    "editor.minimap.enabled": false,
-    "workbench.editor.showTabs": "single",
-    "window.menuBarVisibility": "toggle",
-    "workbench.colorTheme": "GitHub Dark Default"
-}
