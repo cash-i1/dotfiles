@@ -36,10 +36,10 @@ require("lazy").setup({
 vim.cmd("colo kanagawa")
 
 -- use `:h option-list` to see what these do
-vim.opt.textwidth = 80
+-- vim.opt.textwidth = 80
 vim.opt.wrapmargin = 0
 vim.opt.formatoptions:append("t")
-vim.opt.linebreak = true
+-- vim.opt.linebreak = true
 vim.opt.colorcolumn = "80"
 vim.opt.title = true
 vim.opt.syntax = "ON"
