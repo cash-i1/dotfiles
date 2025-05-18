@@ -24,7 +24,7 @@ exec --no-startup-id \
     xrandr --output HDMI-0 --mode 2560x1440 --rate 144 --primary 
 exec redshift -PO 2800
 exec_always --no-startup-id "polybar-msg cmd quit; polybar"
-# exec_always --no-startup-id "i3-nagbar -m 'SIGMA'"
+exec ~/scripts/wal.fish
 
 # keybindings
 bindsym $mod+q exec alacritty
