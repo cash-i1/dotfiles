@@ -76,6 +76,11 @@ return {
                     if server_name == "lua_ls" then
                         s.settings = {
                             Lua = {
+                                workspace = {
+                                    library = {
+                                        "/tmp/love2d-stuff/library/"
+                                    },
+                                },
                                 diagnostics = {
                                     globals = { "vim" }
                                 }

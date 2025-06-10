@@ -9,6 +9,7 @@
   "codestats.nvim": { "branch": "master", "commit": "041b315c4f82997186fcdb3fc2f687cc128a28f3" },
   "ef-themes.nvim": { "branch": "main", "commit": "5deb08237d1e243532dfdb5b24c3658c31d255aa" },
   "fidget.nvim": { "branch": "main", "commit": "e2a175c2abe2d4f65357da1c98c59a5cfb2b543f" },
+  "github-nvim-theme": { "branch": "main", "commit": "c106c9472154d6b2c74b74565616b877ae8ed31d" },
   "kanagawa.nvim": { "branch": "master", "commit": "cc3b68b08e6a0cb6e6bf9944932940091e49bb83" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lualine.nvim": { "branch": "master", "commit": "2a5bae925481f999263d6f5ed8361baef8df4f83" },
