@@ -78,7 +78,7 @@ return {
                             Lua = {
                                 workspace = {
                                     library = {
-                                        "/tmp/love2d-stuff/library/"
+                                        vim.fn.stdpath("config") .. "/love2d_def"
                                     },
                                 },
                                 diagnostics = {
