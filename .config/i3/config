@@ -44,6 +44,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-msg exit"
 bindsym $mod+g mode "resize"
 bindsym $mod+v floating toggle
+bindsym $mod+m exec ~/scripts/screenshot.fish
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
