@@ -16,3 +16,15 @@ function fish_prompt
 
     set_color normal
 end
+
+# function fish_prompt
+#     # python venv shit
+#     if not set -q VIRTUAL_ENV_DISABLE_PROMPT
+#         set -g VIRTUAL_ENV_DISABLE_PROMPT true
+#     end
+#     if test -n "$VIRTUAL_ENV"
+#         echo -n "("(set_color purple)(basename $VIRTUAL_ENV)(set_color normal)") "
+#     end
+#
+#     echo (set_color green)(prompt_pwd)(set_color grey)" :: "(set_color blue)"> "
+# end

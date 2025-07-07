@@ -51,13 +51,11 @@ return {
                     s.capabilities = capabilities
                     s.settings = {}
 
-                    if server_name == "rust-analyzer" then
-                        s.settings["rust-analyzer"] = {
-                            diagnostics = {
-                                enable = true
-                            }
+                    s.settings["rust-analyzer"] = {
+                        diagnostics = {
+                            enable = true
                         }
-                    end
+                    }
 
                     if server_name == "nimlangserver" then
                         s.cmd = { "nimlangserver" }
