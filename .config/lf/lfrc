@@ -1,0 +1,54 @@
+# == settings ==
+# misc shell setup
+set shell sh
+set shellflag -c
+set shellopts '-eu'
+set ifs "\n"
+
+# show hidden files by default
+set hidden
+
+# leave some space at the top and the bottom of the screen
+set scrolloff 10
+
+# Use the `dim` attribute instead of underline for the cursor in the preview pane
+set cursorpreviewfmt "\033[7;2m"
+
+# == mappings ==
+# use enter to run shell commands
+map <enter> shell
+
+# mappings for deleting/trashing
+map x trash
+map <delete> trash
+map X delete
+
+# dedicated keys for file opener actions
+map o open $f
+map O &xdg-open $f
+
+# binds for creating a directory/file
+map a :push %mkdir<space>-p<space>
+map i :push %touch<space>
+
+# bind for renaming. use the default lf rename command
+map r rename
+
+# copy the contents of the selected files
+map Y &cat $fx | wl-copy && lf -remote "send $id echo 'copied file(s) to clipboard'"
+
+# == commands ==
+# use the trash command to move the selected files to the trash
+cmd trash %trash $fx
+
+# custom 'open' command
+cmd open &{{
+    mime_type=$(file --mime-type -Lb $f)
+    case $mime_type in
+        image/*|audio/*|video/*) xdg-open $f;;
+        *) lf -remote "send $id \$$EDITOR \$fx";;
+    esac
+}}
+
+# TODO: currently using the default lf rename and delete commands. 
+#       should they be defined manually?

@@ -49,18 +49,36 @@ return {
                     -- using this table so i can add random edge cases in
                     local s = {}
                     s.capabilities = capabilities
+                    s.settings = {}
 
-                    if server_name == "rust-analyzer" then
-                        s.settings["rust-analyzer"].diagnostics.enable = true
-                    end
+                    s.settings["rust-analyzer"] = {
+                        diagnostics = {
+                            enable = true
+                        }
+                    }
 
                     if server_name == "nimlangserver" then
                         s.cmd = { "nimlangserver" }
                     end
 
+                    if server_name == "pylsp" then
+                        s.settings["pylsp"] = {
+                            plugins = {
+                                pycodestyle = {
+                                    enabled = false
+                                }
+                            }
+                        }
+                    end
+
                     if server_name == "lua_ls" then
                         s.settings = {
                             Lua = {
+                                workspace = {
+                                    library = {
+                                        vim.fn.stdpath("config") .. "/love2d_def"
+                                    },
+                                },
                                 diagnostics = {
                                     globals = { "vim" }
                                 }
@@ -85,7 +103,7 @@ return {
                 { name = 'buffer' },
             }),
             mapping = {
-                ["<Tab>"] = cmp.mapping(function(fallback)
+                ["<A-l>"] = cmp.mapping(function(fallback)
                     if luasnip.jumpable(1) then
                         luasnip.jump(1)
                     elseif has_words_before() then
@@ -95,7 +113,7 @@ return {
                     end
                 end, { "i", "s" }),
 
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                ["<A-h>"] = cmp.mapping(function(fallback)
                     if luasnip.jumpable(-1) then
                         luasnip.jump(-1)
                     else

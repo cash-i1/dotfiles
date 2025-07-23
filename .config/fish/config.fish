@@ -2,27 +2,22 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 fish_add_path "/Users/school/bin"
 
 if status is-interactive
-    bind \c\t nextd-or-forward-word
-    bind \t complete
+    # binds
+    bind tab complete
+    bind ctrl-delete kill-word
+    bind ctrl-backspace backward-kill-word
+    bind ctrl-w backward-kill-word
+    bind ctrl-f to
 
-    # ctrl-backspace and ctrl-del
-    bind \e\[3\;5~ 'kill-word'
-    bind \cH 'backward-kill-word'
-
-    set -x PATH /home/cash/.cargo/bin $PATH
+    # vars
     set -x EDITOR nvim
     set -x GTK_CSD 0
     set -x fish_history_limit 0
-    
-    alias edit $EDITOR
-
-    alias ts tmux-sessionizer
-
-    set -xa PATH ~/bin
-    set -xa PATH ~/.nimble/bin/
-    set -x NIM_HOME /usr/lib/nim
-    set -x NIM_LIB_PATH /usr/lib/nim
 
     # shitty default macos python 
     alias py /opt/homebrew/opt/python@3.13/bin/python3
+    
+    # path
+    set -xa PATH ~/bin
+    set -xa PATH ~/scripts/
 end
