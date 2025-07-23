@@ -22,4 +22,7 @@ if status is-interactive
     set -xa PATH ~/.nimble/bin/
     set -x NIM_HOME /usr/lib/nim
     set -x NIM_LIB_PATH /usr/lib/nim
+
+    # shitty default macos python 
+    alias py /opt/homebrew/opt/python@3.13/bin/python3
 end
