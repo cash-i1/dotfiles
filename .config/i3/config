@@ -1,13 +1,13 @@
 # colors (taken from polybar wiki)
-set_from_resource $fg i3wm.color0 #f0f0f0
-set_from_resource $bg i3wm.color5 #f0f0f0
+# set_from_resource $fg i3wm.color0 #f0f0f0
+# set_from_resource $bg i3wm.color5 #f0f0f0
 
-client.focused          $bg     $bg     $fg  $bg       $bg
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
-client.urgent           $bg     $bg     $fg  $bg       $bg
-client.placeholder      $bg     $bg     $fg  $bg       $bg
-client.background       $bg
+# client.focused          $bg     $bg     $fg  $bg       $bg
+# client.focused_inactive $bg     $bg     $fg  $bg       $bg
+# client.unfocused        $bg     $bg     $fg  $bg       $bg
+# client.urgent           $bg     $bg     $fg  $bg       $bg
+# client.placeholder      $bg     $bg     $fg  $bg       $bg
+# client.background       $bg
 
 # vars
 set $mod Mod4
@@ -22,9 +22,16 @@ font pango:monospace
 # execs
 exec --no-startup-id \
     xrandr --output HDMI-0 --mode 2560x1440 --rate 144 --primary 
-exec redshift -PO 2800
+exec xinput set-prop "13" "libinput Accel Profile Enabled" 0 1 0
 exec_always --no-startup-id "polybar-msg cmd quit; polybar"
-exec ~/scripts/wal.fish
+exec redshift -PO 2800
+exec blueman-applet
+# exec ~/scripts/wal.fish
+exec /opt/piavpn/bin/pia-client
+
+# setup per workspace programs
+exec --no-startup-id i3-msg 'workspace 1; exec firefox'
+exec --no-startup-id i3-msg 'workspace 2; exec alacritty'
 
 # keybindings
 bindsym $mod+q exec alacritty
@@ -87,6 +94,6 @@ mode "resize" {
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym $mod+v mode "default"
+        bindsym $mod+g mode "default"
 }
 

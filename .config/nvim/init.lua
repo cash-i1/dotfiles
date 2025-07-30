@@ -34,6 +34,7 @@ require("lazy").setup({
 -- vim.cmd("colo ef-winter")
 -- vim.cmd("colo vscode")
 vim.cmd("colo kanagawa")
+-- vim.cmd("colo lackluster")
 
 -- use `:h option-list` to see what these do
 -- vim.opt.textwidth = 80
@@ -95,11 +96,11 @@ map("n", "<leader>k", ":lua vim.lsp.buf.references()<cr>")
 -- map("n", "<leader><leader>", ":!make -j<CR>")
 
 -- TODO: this doesnt work
-map('c', '<c-h>', '<left>')
-map('c', '<c-l>', '<right>')
-map('c', '<c-k>', '<up>')
-map('c', '<c-j>', '<down>')
+-- map('c', '<c-h>', '<left>')
+-- map('c', '<c-l>', '<right>')
+-- map('c', '<c-k>', '<up>')
+-- map('c', '<c-j>', '<down>')
 
-map("n", "<s-l>", ":bnext<CR>")
-map("n", "<s-h>", ":bprev<CR>")
+-- map("n", "<s-l>", ":bnext<CR>")
+-- map("n", "<s-h>", ":bprev<CR>")
 

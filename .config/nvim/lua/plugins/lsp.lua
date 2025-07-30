@@ -86,6 +86,36 @@ return {
                         }
                     end
 
+                    if server_name == "clangd" then
+                        s.cmd = { "clangd", "--header-insertion=never" }
+                    end
+
+                    if server_name == "pyright" then
+                        s.settings = {
+                            python = {
+                                analysis = {
+                                    typeCheckingMode = "strict"
+                                }
+                            }
+                        }
+                    end
+
+                    -- -- make lsp work with virtual env
+                    -- if server_name == "pylsp" then
+                    --     local venv_path = os.getenv("VIRTUAL_ENV")
+                    --     if venv_path then
+                    --         s.settings = {
+                    --             pylsp = {
+                    --                 plugins = {
+                    --                     jedi = {
+                    --                         extra_paths = { venv_path .. "/bin/python3" }
+                    --                     }
+                    --                 }
+                    --             }
+                    --         }
+                    --     end
+                    -- end
+
                     require("lspconfig")[server_name].setup(s)
                 end,
             }
