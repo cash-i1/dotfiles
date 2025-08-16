@@ -33,8 +33,9 @@ require("lazy").setup({
 
 -- vim.cmd("colo ef-winter")
 -- vim.cmd("colo vscode")
-vim.cmd("colo kanagawa")
 -- vim.cmd("colo lackluster")
+-- vim.cmd("colo kanagawa")
+vim.cmd("colo vague")
 
 -- use `:h option-list` to see what these do
 -- vim.opt.textwidth = 80
@@ -70,6 +71,7 @@ vim.opt.backup = true
 vim.opt.backupdir = vim.fn.stdpath('cache') .. "/backup"
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath('cache') .. "/undo"
+vim.opt.conceallevel = 3
 
 local function map(mode, combo, what_to_do)
     vim.keymap.set(mode, combo, what_to_do, { noremap = true, silent = true })

@@ -1,7 +1,8 @@
 return {
-    { "Mofiqul/vscode.nvim" },
-    { "oonamo/ef-themes.nvim" },
+    -- { "Mofiqul/vscode.nvim" },
+    -- { "oonamo/ef-themes.nvim" },
     { "rebelot/kanagawa.nvim" },
+    { "vague2k/vague.nvim" },
     -- { "squarefrog/tomorrow-night.vim" },
     -- { "chriskempson/vim-tomorrow-theme" },
     -- { "projekt0n/github-nvim-theme" },
