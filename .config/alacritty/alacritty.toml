@@ -1,47 +1,8 @@
-# [terminal]
-# shell = "tmux" 
-
 [general]
-# import = ["moonfly.toml"]
-# import = ["vscode.toml"]
-# import = ["./3024_night.toml"]
-# import = ["./black_metal_gorgoroth-256.toml"]
-# import = ["./kanawaga.toml"]
 live_config_reload = true
 
 [font]
-# normal = {family = "Terminess Nerd Font", style = "bold"}
-
-# normal = {family = "CaskaydiaMono Nerd Font Mono"}
-# bold = {family = "CaskaydiaMono Nerd Font Mono", style = "bold"}
-
-# normal = {family = "Departure Mono"}
-# size = 20
-
-# normal = { family = "CozetteVector" }
-# bold = { family = "CozetteVectorBold" }
-# size = 22
-
-# normal = { family = "Hack" }
 size = 16
+normal = { family = "Roboto Mono Nerd Font" }
 
 # normal = { family = "JetBrains Mono Nerd Font", style = "bold" }
-
-# normal = { family = "ComicShannsMono Nerd Font", style = "bold" }
-# normal = { family = "Comic Mono", style = "bold" }
-
-# normal = { family = "OpenDyslexicM Nerd Font Mono", style = "SemiBold" }
-
-# normal = { family = "Iosevka", style = "Bold" }
-# normal = { family = "HackNerdFont" }
-# # size = 18
-
-# normal = { family = "ProggyCleanCENerdFont" }
-
-# normal = { family = "Roboto Mono Nerd Font", style = "SemiBold" }
-# normal = { family = "MesloLGM Nerd Font Mono", style = "SemiBold" }
-# normal = { family = "GohuFont 14 Nerd Font", style = "bold" }
-
-
-
-normal = { family = "Roboto Mono Nerd Font" }
